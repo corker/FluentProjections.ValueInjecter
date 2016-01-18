@@ -1,4 +1,4 @@
-﻿using FluentProjections.EventHandlingStrategies.Arguments;
+﻿using FluentProjections.Strategies.Arguments;
 using Omu.ValueInjecter;
 
 namespace FluentProjections.ValueInjecter

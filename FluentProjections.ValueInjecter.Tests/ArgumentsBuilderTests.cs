@@ -1,5 +1,5 @@
 ﻿using System;
-using FluentProjections.EventHandlingStrategies;
+using FluentProjections.Strategies;
 using NUnit.Framework;
 
 namespace FluentProjections.Tests
