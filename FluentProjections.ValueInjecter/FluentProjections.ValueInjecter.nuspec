@@ -8,8 +8,8 @@
     <title />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <projectUrl>https://github.com/corker/fluent-projections</projectUrl>
-    <licenseUrl>https://raw.github.com/corker/fluent-projections/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/corker/FluentProjections</projectUrl>
+    <licenseUrl>https://raw.github.com/corker/FluentProjections/master/LICENSE</licenseUrl>
     <tags>CQRS EventSource</tags>
   </metadata>
 </package>
