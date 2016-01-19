@@ -31,9 +31,9 @@ namespace FluentProjections.ValueInjecter.Tests
                 _persistence = persistence;
             }
 
-            public async Task<IPersistProjections> Create()
+            public IPersistProjections Create()
             {
-                return await Task.FromResult(_persistence);
+                return _persistence;
             }
         }
 
@@ -50,30 +50,27 @@ namespace FluentProjections.ValueInjecter.Tests
             public List<TestProjection> InsertProjections { get; private set; }
             public IEnumerable<FilterValue> RemoveFilterValues { get; private set; }
 
-            public async Task<IEnumerable<TProjection>> Read<TProjection>(IEnumerable<FilterValue> values)
+            public IEnumerable<TProjection> Read<TProjection>(IEnumerable<FilterValue> values)
                 where TProjection : class
             {
                 ReadFilterValues = values;
-                return await Task.FromResult(new[] {ReadProjection}.OfType<TProjection>());
+                return new[] {ReadProjection}.OfType<TProjection>();
             }
 
-            public async Task Update<TProjection>(TProjection projection) where TProjection : class
+            public void Update<TProjection>(TProjection projection) where TProjection : class
             {
                 UpdateProjection = projection as TestProjection;
-                await Task.Yield();
             }
 
-            public async Task Insert<TProjection>(TProjection projection) where TProjection : class
+            public void Insert<TProjection>(TProjection projection) where TProjection : class
             {
                 InsertProjections = InsertProjections ?? new List<TestProjection>();
                 InsertProjections.Add(projection as TestProjection);
-                await Task.Yield();
             }
 
-            public async Task Remove<TProjection>(IEnumerable<FilterValue> values) where TProjection : class
+            public void Remove<TProjection>(IEnumerable<FilterValue> values) where TProjection : class
             {
                 RemoveFilterValues = values;
-                await Task.Yield();
             }
         }
 
@@ -86,9 +83,9 @@ namespace FluentProjections.ValueInjecter.Tests
                 {
                 }
 
-                public async Task Handle(TestEvent @event)
+                public void Handle(TestEvent @event)
                 {
-                    await Handle(@event, x => x.AddNew().Inject());
+                    Handle(@event, x => x.AddNew().Inject());
                 }
             }
 
@@ -104,7 +101,7 @@ namespace FluentProjections.ValueInjecter.Tests
 
                 _targetPersistence = new TestPersistence(null);
                 var persistenceFactory = new TestPersistenceFactory(_targetPersistence);
-                new TestHandler(persistenceFactory).Handle(@event).Wait();
+                new TestHandler(persistenceFactory).Handle(@event);
             }
 
             [Test]

@@ -33,8 +33,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentProjections, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentProjections.2.0.7.0\lib\net45\FluentProjections.dll</HintPath>
+    <Reference Include="FluentProjections, Version=2.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentProjections.2.0.8.0\lib\net45\FluentProjections.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Omu.ValueInjecter, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -52,6 +52,10 @@
   <ItemGroup>
     <None Include="FluentProjections.ValueInjecter.nuspec" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Logging\licence.txt" />
+    <Content Include="Logging\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
