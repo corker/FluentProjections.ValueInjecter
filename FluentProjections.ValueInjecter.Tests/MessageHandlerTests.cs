@@ -22,22 +22,22 @@ namespace FluentProjections.ValueInjecter.Tests
             public long ValueInt64 { get; set; }
         }
 
-        private class TestPersistenceFactory : ICreateProjectionPersistence
+        private class TestPersistenceFactory : ICreateProjectionProviders
         {
-            private readonly IPersistProjections _persistence;
+            private readonly IProvideProjections _persistence;
 
-            public TestPersistenceFactory(IPersistProjections persistence)
+            public TestPersistenceFactory(IProvideProjections persistence)
             {
                 _persistence = persistence;
             }
 
-            public IPersistProjections Create()
+            public IProvideProjections Create()
             {
                 return _persistence;
             }
         }
 
-        private class TestPersistence : IPersistProjections
+        private class TestPersistence : IProvideProjections
         {
             public TestPersistence(TestProjection readProjection)
             {
@@ -79,7 +79,7 @@ namespace FluentProjections.ValueInjecter.Tests
         {
             private class TestHandler : MessageHandler<TestProjection>
             {
-                public TestHandler(ICreateProjectionPersistence persistenceFactory) : base(persistenceFactory)
+                public TestHandler(ICreateProjectionProviders persistenceFactory) : base(persistenceFactory)
                 {
                 }
 
